@@ -18,53 +18,53 @@
   become_user: isucon
   command: /home/isucon/.cargo/bin/rustup update stable
 
-- name: Install Deno v1.3.2
-  become: yes
-  become_user: isucon
-  shell: |
-    curl -fsSL https://deno.land/x/install/install.sh | sh -s v1.3.2
-- name: Add PATH for deno
-  become: yes
-  become_user: isucon
-  blockinfile:
-    marker: "# {mark} ANSIBLE MANAGED BLOCK deno"
-    path: /home/isucon/.bashrc
-    content: |
-      export PATH=/home/isucon/.deno/bin:$PATH
-
-
-- name: install xbuild
-  become: yes
-  become_user: isucon
-  git:
-    repo: https://github.com/tagomoris/xbuild.git
-    dest: /tmp/xbuild
-    version: master
-
-- name: Install PHP
-  become: yes
-  become_user: isucon
-  args:
-    chdir: /home/isucon
-  command: >
-    /tmp/xbuild/php-install 7.4.9 /home/isucon/local/php --
-    --with-pcre-regex --with-zlib --enable-fpm --enable-pdo --with-pear
-    --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --with-openssl
-    --with-pcre-regex --with-pcre-dir --with-libxml-dir --enable-opcache
-    --enable-bcmath --with-bz2 --enable-calendar --enable-cli --enable-shmop
-    --enable-sysvsem --enable-sysvshm --enable-sysvmsg --enable-mbregex
-    --enable-mbstring --enable-pcntl --enable-sockets --with-curl --enable-zip
-  environment:
-    PHP_BUILD_EXTRA_MAKE_ARGUMENTS: "-j {{ ansible_processor_vcpus }}"
-
-- name: Add PATH for PHP
-  become: yes
-  become_user: isucon
-  blockinfile:
-    marker: "# {mark} ANSIBLE MANAGED BLOCK php"
-    dest: /home/isucon/.bashrc
-    content: |
-      export PATH=/home/isucon/local/php/bin:$PATH
+  #- name: Install Deno v1.3.2
+  #  become: yes
+  #  become_user: isucon
+  #  shell: |
+  #    curl -fsSL https://deno.land/x/install/install.sh | sh -s v1.3.2
+  #- name: Add PATH for deno
+  #  become: yes
+  #  become_user: isucon
+  #  blockinfile:
+  #    marker: "# {mark} ANSIBLE MANAGED BLOCK deno"
+  #    path: /home/isucon/.bashrc
+  #    content: |
+  #      export PATH=/home/isucon/.deno/bin:$PATH
+  #
+  #
+  #- name: install xbuild
+  #  become: yes
+  #  become_user: isucon
+  #  git:
+  #    repo: https://github.com/tagomoris/xbuild.git
+  #    dest: /tmp/xbuild
+  #    version: master
+  #
+  #- name: Install PHP
+  #  become: yes
+  #  become_user: isucon
+  #  args:
+  #    chdir: /home/isucon
+  #  command: >
+  #    /tmp/xbuild/php-install 7.4.9 /home/isucon/local/php --
+  #    --with-pcre-regex --with-zlib --enable-fpm --enable-pdo --with-pear
+  #    --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --with-openssl
+  #    --with-pcre-regex --with-pcre-dir --with-libxml-dir --enable-opcache
+  #    --enable-bcmath --with-bz2 --enable-calendar --enable-cli --enable-shmop
+  #    --enable-sysvsem --enable-sysvshm --enable-sysvmsg --enable-mbregex
+  #    --enable-mbstring --enable-pcntl --enable-sockets --with-curl --enable-zip
+  #  environment:
+  #    PHP_BUILD_EXTRA_MAKE_ARGUMENTS: "-j {{ ansible_processor_vcpus }}"
+  #
+  #- name: Add PATH for PHP
+  #  become: yes
+  #  become_user: isucon
+  #  blockinfile:
+  #    marker: "# {mark} ANSIBLE MANAGED BLOCK php"
+  #    dest: /home/isucon/.bashrc
+  #    content: |
+  #      export PATH=/home/isucon/local/php/bin:$PATH
 - name: Install Ruby v2.7.1
   become: yes
   become_user: isucon
