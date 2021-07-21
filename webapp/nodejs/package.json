@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/isucon/isucon10-qualify.git"
+    "url": "git+https://github.com/igayamaguchi/isucon10-qualify.git"
   },
   "author": "isucon",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/isucon/isucon10-qualify/issues"
+    "url": "https://github.com/igayamaguchi/isucon10-qualify/issues"
   },
-  "homepage": "https://github.com/isucon/isucon10-qualify#readme",
+  "homepage": "https://github.com/igayamaguchi/isucon10-qualify#readme",
   "dependencies": {
     "camelcase-keys": "^6.2.2",
     "csv-parse": "^4.12.0",
